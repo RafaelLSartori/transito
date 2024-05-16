@@ -1,7 +1,8 @@
-import javax.swing.*;
+import javax.swing.JOptionPane;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String [] args) throws IOException {
         Estatistica estatistica[] = new Estatistica[10];
         ClasseMetodos m = new ClasseMetodos();
 
@@ -10,21 +11,23 @@ public class Main {
         }
 
         int opc = 0;
+
         while(opc != 9){
-            opc = Integer.parseInt(JOptionPane.showInputDialog("1 -  Cadastra Cidade \n 2 - Consulta Acid >100 e <500 \n 3 - Menor e Maior nº acid \n 4 - Cid qtd de acid acima media 10 cid \n 9 - Finaliza"));
+            opc = Integer.parseInt(JOptionPane.showInputDialog("1 - Cadastra \n 2 - Quantidade de acidentes \n 3 - Maior e menor qtd acid \n 4 - Acima da média de acid \n 5 - Gravar \n 9 - Finaliza"));
             switch(opc){
-                case 1: estatistica = m.FCadastra(estatistica);
-                break;
+                case 1: estatistica = m.FCADRASTRAESTATISTICA(estatistica);
+                    break;
                 case 2: m.PQTDACIDENTES(estatistica);
+                    break;
                 case 3: m.PMAIORMENOR(estatistica);
-                break;
+                    break;
                 case 4: m.PACIMA(estatistica);
-                break;
+                    break;
+                case 5: estatistica = m.FGRAVA(estatistica);
                 case 9: JOptionPane.showMessageDialog(null,"Programa finalizado");
-                break;
+                    break;
                 default: JOptionPane.showMessageDialog(null,"Opção Inválida");
             }
         }
-
     }
 }
